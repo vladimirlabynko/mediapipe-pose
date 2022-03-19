@@ -51,6 +51,15 @@ def process_video(input,output):
                     landmarks = results.pose_landmarks.landmark
                     mp_drawing.draw_landmarks(image,results.pose_landmarks,mp_holistic.POSE_CONNECTIONS,
                 landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
+                    mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS,
+                             mp_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
+                             mp_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
+                             )
+    # Draw right hand connections 
+                    mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS,
+                             mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=4),
+                             mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2)
+                             )
                 except:
                     pass
                 
