@@ -2,7 +2,7 @@ import cv2
 import mediapipe as mp
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
-mp_pose = mp.solutions.pose
+mp_holistic = mp.solutions.holistic
 
 
 def process(input, output):
@@ -24,9 +24,8 @@ def process(input, output):
     output, cv2.VideoWriter_fourcc(*'mp4v'), fps, frame_size)
 
 
-  with mp_pose.Pose(
-        min_detection_confidence=0.7,
-        min_tracking_confidence=0.7) as pose:
+  with mp_holistic.Holistic(
+    min_detection_confidence=0.7, min_tracking_confidence=0.7) as holistic:
       while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -38,7 +37,7 @@ def process(input, output):
         # pass by reference.
         image.flags.writeable = False
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        results = pose.process(image)
+        results = holistic.process(image)
 
         # Draw the pose annotation on the image.
         image.flags.writeable = True
@@ -46,9 +45,8 @@ def process(input, output):
         mp_drawing.draw_landmarks(
             image,
             results.pose_landmarks,
-            mp_pose.POSE_CONNECTIONS,
+            mp_holistic.POSE_CONNECTIONS,
             landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
-        # Flip the image horizontally for a selfie-view display.
         output.write(image)
   cap.release()
   output.release()
