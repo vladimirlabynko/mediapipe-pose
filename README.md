@@ -5,7 +5,7 @@ https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
 After installation in terminal enter 
 
 ```
-conda create -n "name of env" python="version"
+conda create -n "name of env" python=3.8
 conda activate "name of env" 
 conda install -c anaconda pip
 ```
