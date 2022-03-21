@@ -9,8 +9,8 @@ conda create -n "name of env" python=3.8
 conda activate "name of env" 
 conda install -c anaconda pip
 ```
-2) Install libraties 
-go to project folder and enter  in terminal
+2) Install libraries 
+go to project folder and enter in terminal
 ```
 pip -r requirements.txt
 ```
