@@ -19,4 +19,4 @@ pip -r requirements.txt
 ```
 python pose.py --input=/path/to/original/file --output=/path/to/output/processed/file
 ```
-Wait until programm print "Done!"
+Wait until program print "Done!"
